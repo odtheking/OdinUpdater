@@ -1,18 +1,24 @@
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class Main {
 
     public static void main(String[] args) {
-        File oldVersion = new File(args[0]);
+        File oldJar = new File(args[0]);
+        while (oldJar.exists()) {
+            oldJar.delete();
+        }
 
-        if (oldVersion.delete()) {
-            String relaunchCommand = args[1];
-            try {
+        File relaunchCommandFile = new File(args[1]);
+        String relaunchCommand;
+        try {
+            relaunchCommand = String.join("", Files.readAllLines(relaunchCommandFile.toPath()));
+            if (relaunchCommandFile.delete()) {
                 Runtime.getRuntime().exec(relaunchCommand);
-            } catch (IOException ignored) {
-
             }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

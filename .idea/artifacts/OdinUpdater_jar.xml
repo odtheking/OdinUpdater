@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="OdinUpdater:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/OdinUpdater_jar</output-path>
+    <root id="archive" name="OdinUpdater.jar">
+      <element id="module-output" name="OdinUpdater" />
+    </root>
+  </artifact>
+</component>
